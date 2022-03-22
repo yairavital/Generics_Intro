@@ -74,16 +74,7 @@ namespace Lesson20HW
         public List<Book> GetBooksSortedByAuthorName()
         {
             List<Book> authorsSort = books.Values.OrderBy(book => book.Author).ToList();
-            //List<string> AuthorNameSort = new List<string>();
-            //AuthorNameSort = books.Keys.OrderBy(x => x).ToList();
-            //foreach (string authorName  in AuthorNameSort)
-            //{
-            //    foreach(Book book in books.Values)
-            //    {
-            //        if(book.Author == authorName)
-            //            authorsSort.Add(book);
-            //    }
-            //}
+
             return authorsSort;
 
         }
@@ -98,9 +89,10 @@ namespace Lesson20HW
         }
         public override string ToString()
         { string print = "";
-            foreach( Book book in books.Values )
+            foreach( KeyValuePair<string,Book> keyValuePair in books )
             {
-               print+= book.ToString()+"/n"; 
+                
+               print+= keyValuePair.Key+": "+keyValuePair.Value.ToString()+"\n";
             }
             return print;
         }
